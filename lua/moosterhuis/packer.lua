@@ -88,4 +88,8 @@ return require('packer').startup(function(use)
           require('Comment').setup()
       end
   }
+
+  use {
+      'ThePrimeagen/vim-be-good'
+  }
 end)
