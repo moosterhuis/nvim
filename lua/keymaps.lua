@@ -40,6 +40,9 @@ vim.keymap.set('n', '<Leader>gs', ':lua FugitiveToggle()<CR>', { noremap = true,
 vim.keymap.set('n', '<Leader>gp', ':G pull<CR>', { noremap = true, silent = true, desc = 'Git pull' })
 vim.keymap.set('n', '<Leader>gP', ':G push<CR>', { noremap = true, silent = true, desc = 'Git push' })
 
+-- Zenmode
+vim.keymap.set('n', '<Leader>z', ':ZenMode<CR>', { noremap = true, silent = true, desc = 'Toggle ZenMode' })
+
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
