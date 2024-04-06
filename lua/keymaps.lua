@@ -2,7 +2,7 @@
 --  See `:help vim.keymap.set()`
 
 -- Netrw
-vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
+vim.keymap.set('n', '<leader>pv', vim.cmd.Rexplore)
 
 -- Move selected lines
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
