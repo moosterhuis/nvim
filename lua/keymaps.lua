@@ -25,6 +25,20 @@ vim.keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 -- Format buffer
 vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, { desc = 'Format buffer' })
 
+-- Spectre
+vim.keymap.set('n', '<leader>S', '<cmd>lua require("spectre").toggle()<CR>', {
+  desc = 'Toggle Spectre',
+})
+vim.keymap.set('n', '<leader>sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
+  desc = 'Search current word',
+})
+vim.keymap.set('v', '<leader>sw', '<esc><cmd>lua require("spectre").open_visual()<CR>', {
+  desc = 'Search current word',
+})
+vim.keymap.set('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
+  desc = 'Search on current file',
+})
+
 -- Fugitive
 function FugitiveToggle()
   local fugitive_buf_no = vim.fn.bufnr '^fugitive:'
@@ -36,6 +50,7 @@ function FugitiveToggle()
     vim.cmd ':G'
   end
 end
+
 vim.keymap.set('n', '<Leader>gs', ':lua FugitiveToggle()<CR>', { noremap = true, silent = true, desc = 'FugitiveToggle' })
 vim.keymap.set('n', '<Leader>gp', ':G pull<CR>', { noremap = true, silent = true, desc = 'Git pull' })
 vim.keymap.set('n', '<Leader>gP', ':G push<CR>', { noremap = true, silent = true, desc = 'Git push' })
