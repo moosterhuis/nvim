@@ -2,7 +2,24 @@
 --  See `:help vim.keymap.set()`
 
 -- Netrw
-vim.keymap.set('n', '<leader>pv', vim.cmd.Rexplore)
+_G.NetrwIsOpen = false
+
+function ToggleNetrw()
+  if _G.NetrwIsOpen then
+    local i = vim.fn.bufnr '$'
+    while i >= 1 do
+      if vim.fn.getbufvar(i, '&filetype') == 'netrw' then
+        vim.cmd('silent bwipeout ' .. i)
+      end
+      i = i - 1
+    end
+    _G.NetrwIsOpen = false
+  else
+    _G.NetrwIsOpen = true
+    vim.cmd 'silent Explore'
+  end
+end
+vim.api.nvim_set_keymap('n', '<leader>pv', ':lua ToggleNetrw()<CR>', { noremap = true, silent = true })
 
 -- Move selected lines
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
