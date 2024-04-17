@@ -111,6 +111,15 @@ local function enable_debugger(bufnr)
   vim.keymap.set('n', '<leader>dn', "<cmd>lua require('jdtls').test_nearest_method()<cr>", opts)
 end
 
+-- Function to generate test file
+function Generate_test_file()
+  -- Get the current buffer's file path
+  local current_file = vim.fn.expand '%:p'
+  local test_file_path = string.gsub(current_file, '/src/main/java/', '/src/test/java/')
+  test_file_path = string.gsub(test_file_path, '%.java$', 'Test.java')
+  vim.cmd('e ++p ' .. vim.fn.fnameescape(test_file_path))
+end
+
 local function jdtls_on_attach(client, bufnr)
   if features.debugger then
     enable_debugger(bufnr)
@@ -130,7 +139,11 @@ local function jdtls_on_attach(client, bufnr)
   vim.keymap.set('n', 'crc', "<cmd>lua require('jdtls').extract_constant()<cr>", opts)
   vim.keymap.set('x', 'crc', "<esc><cmd>lua require('jdtls').extract_constant(true)<cr>", opts)
   vim.keymap.set('x', 'crm', "<esc><Cmd>lua require('jdtls').extract_method(true)<cr>", opts)
+
+  -- Map a key to trigger the function
+  vim.api.nvim_set_keymap('n', '<leader>gt', ':lua Generate_test_file()<CR>', { noremap = true, silent = true })
 end
+--
 
 local function jdtls_setup(event)
   local jdtls = require 'jdtls'
