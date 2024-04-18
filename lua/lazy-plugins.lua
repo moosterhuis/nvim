@@ -12,6 +12,8 @@
 require('lazy').setup({
 
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
+  'vim-test/vim-test',
+
   { 'nvim-pack/nvim-spectre', dependencies = { 'nvim-lua/plenary.nvim' } },
 
   'mfussenegger/nvim-jdtls',
@@ -42,7 +44,7 @@ require('lazy').setup({
 
   require 'custom/plugins/toggleterm',
 
-  require 'custom/plugins/neotest',
+  -- require 'custom/plugins/neotest',
 
   require 'kickstart/plugins/gitsigns',
 
