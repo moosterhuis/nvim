@@ -124,3 +124,17 @@ keymap.set("n", '<leader>df', '<cmd>Telescope dap frames<cr>')
 keymap.set("n", '<leader>dh', '<cmd>Telescope dap commands<cr>')
 keymap.set("n", '<leader>sd', function() require('telescope.builtin').diagnostics({default_text=""}) end)
 
+-- Fugitive
+function FugitiveToggle()
+  local fugitive_buf_no = vim.fn.bufnr '^fugitive:'
+  local buf_win_id = vim.fn.bufwinid(fugitive_buf_no)
+  if fugitive_buf_no >= 0 and buf_win_id >= 0 then
+    print 'closing fugitive window'
+    vim.api.nvim_win_close(buf_win_id, false)
+  else
+    vim.cmd ':G'
+  end
+end
+
+vim.keymap.set('n', '<Leader>gs', ':lua FugitiveToggle()<CR>', { noremap = true, silent = true, desc = 'FugitiveToggle' })
+vim.keymap.set('n', '<Leader>gp', ':G pull<CR>', { noremap = true, silent = true, desc = 'Git pull' })

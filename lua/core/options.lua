@@ -40,7 +40,6 @@ opt.clipboard:append("unnamedplus")
 
 -- Split Windows
 opt.splitright = true
-opt.splitbelow = true
 
 -- Consider - as part of keyword
 opt.iskeyword:append("-")
