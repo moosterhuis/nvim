@@ -58,3 +58,9 @@ vim.opt.inccommand = 'split'
 -- Save undo history
 vim.opt.undofile = true
 
+-- Scroll offset
+vim.opt.scrolloff = 8
+
+-- Update time
+vim.opt.updatetime = 50
+
