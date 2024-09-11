@@ -5,6 +5,12 @@ local keymap = vim.keymap
 
 -- General keymaps
 keymap.set("n", "gx", ":!open <c-r><c-a><CR>") -- open URL under cursor
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+vim.keymap.set("n", "<C-p>", "<C-u>zz")
+vim.keymap.set("n", "<C-n>", "<C-d>zz")
 
 -- Split window management
 keymap.set("n", "<leader>v", "<C-w>v")     -- split window vertically
@@ -109,23 +115,28 @@ keymap.set("n", '<leader>gu', function()
     end
 end)
 
-keymap.set("n", '<leader>tc', function()
-    if vim.bo.filetype == 'java' then
-        require('jdtls').test_class();
-    end
-end)
+-- keymap.set("n", '<leader>tc', function()
+--     if vim.bo.filetype == 'java' then
+--         require('jdtls').test_class();
+--     end
+-- end)
 
-keymap.set("n", '<leader>tm', function()
-    if vim.bo.filetype == 'java' then
-        require('jdtls').test_nearest_method();
-    end
-end)
+-- keymap.set("n", '<leader>tm', function()
+--     if vim.bo.filetype == 'java' then
+--         require('jdtls').test_nearest_method();
+--     end
+-- end)
 
 keymap.set("n", '<leader>tg', function()
     if vim.bo.filetype == 'java' then
         require('jdtls.tests').generate();
     end
 end)
+
+-- Testing
+keymap.set("n", "<leader>tc", "<cmd>TestClass<cr>")
+keymap.set("n", "<leader>tf", "<cmd>TestFile<cr>")
+keymap.set("n", "<leader>tm", "<cmd>TestNearest<cr>")
 
 -- Debugging
 keymap.set("n", "<leader>bb", "<cmd>lua require'dap'.toggle_breakpoint()<cr>")
